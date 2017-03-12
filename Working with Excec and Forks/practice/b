@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <unistd.h>
+
+int main()
+{
+    char *x[3];
+    extern char **environ;
+
+    x[0] = "cat";
+    x[1] = "a wacky file name illustrating that each of these is an argument without reparsing";
+    x[2] = NULL;
+    execve("/bin/cat", x, environ);
+    perror("/bin/cat");
+    
